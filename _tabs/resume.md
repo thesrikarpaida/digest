@@ -7,8 +7,11 @@ order: 3
 #### Cybersecurity grad student @ UMD with a strong passion for building and breaking stuff.
 ###### [ [spaida@terpmail.umd.edu](mailto:spaida@terpmail.umd.edu) ] . [ [/in/srikarpaida](https://www.linkedin.com/in/srikarpaida/) ] . [ [github.com/thesrikarpaida](https://github.com/thesrikarpaida) ]
 
-Experience
+
+## Experience
+
 ------
+
 **Graduate Teaching Assistant @ University of Maryland, College Park** (Jan 2025-Present)
 
  - Assisted in teaching and grading coursework for Ethics, Privacy and Security in Big Data as well as Human-Centered Cybersecurity.
@@ -25,24 +28,33 @@ Experience
  - Led the team in overcoming obstacles during sprints by implementing fun and effective problem-solving strategies, ensuring timely delivery of sprint commitments, and boosting team morale.
  - Migrated the UI tech stack from Angular JS to React JS.
 
+**Senior Analyst @ Capgemini** (Aug 2021-Mar 2022)
+
+ - Managed end-to-end deployment process for a mission-critical energy management system by coordinating with cross-functional teams and resources to ensure successful production releases.
+ - Conducted daily status checks on production servers, monitoring for performance, security, and uptime, and delivered comprehensive reports to stakeholders on a regular basis, ensuring proactive issue resolution and system reliability.
+
+**Summer Research Intern @ IIIT Allahabad** (May 2019-Jul 2019)
 
 
+## Projects
 
-Projects
 ------
 
 
 
-Skills
+## Skills
+
 ------
 
 
 
-Education
+## Education
+
 ------
 
 
 
-Publications and Certifications
+## Publications and Certifications
+
 ------
 
