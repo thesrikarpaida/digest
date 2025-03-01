@@ -6,9 +6,7 @@ order: 3
 ---
 
 ##### Cybersecurity grad student @ UMD with a strong passion for building and breaking stuff.
-<center>
 ###### [ [spaida@terpmail.umd.edu](mailto:spaida@terpmail.umd.edu) ] . [ [/in/srikarpaida](https://www.linkedin.com/in/srikarpaida/) ] . [ [github.com/thesrikarpaida](https://github.com/thesrikarpaida) ]
-</center>
 
 
 ## Experience
