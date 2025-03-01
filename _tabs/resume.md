@@ -1,5 +1,6 @@
 ---
 # the default layout is 'page'
+title: Srikar Paida
 icon: fas fa-info-circle
 order: 3
 ---
@@ -39,7 +40,13 @@ order: 3
 
 ------
 
+**Penetration Testing Enterprise Systems** (Dec 2024)
+ - Executed black-box penetration testing on Windows and Linux systems, simulating real-world attack scenarios to uncover critical vulnerabilities.
+ - Produced a detailed technical penetration testing report outlining vulnerability findings, exploitation techniques, and remediation recommendations.
+ - Prepared an executive-level summary report to communicate key risks and business impact to non-technical stakeholders.
 
+**Web Server in Assembly** (Aug 2024)
+ - Built a web server entirely in x64 Assembly language.
 
 
 ## Skills
