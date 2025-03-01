@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-page.title: Srikar Paida
+title: Srikar Paida
 icon: fas fa-info-circle
 order: 3
 ---
