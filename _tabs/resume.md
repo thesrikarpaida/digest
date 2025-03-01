@@ -6,10 +6,6 @@ order: 3
 
 <!-- Resume placeholder content. -->
 
-## Education
-
------
-
 ## Experience
 
 
@@ -21,6 +17,11 @@ order: 3
 -----
 
 ## Skills
+
+
+-----
+
+## Education
 
 
 -----
