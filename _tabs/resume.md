@@ -58,6 +58,9 @@ effective application of theoretical concepts to real-world scenarios.
 
 ------
 
+**University of Maryland, College Park, MD, United States** (May 2025) <br>
+Master of Engineering in Cybersecurity, GPA: 4.0 <br>
+**_Relevant Coursework:_** Hacking of C Programs and Unix Binaries, Reverse Software Engineering, Advanced Hacking of Linux, Digital Forensics and Incident Response
 
 
 ## Publications and Certifications
