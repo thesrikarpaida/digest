@@ -14,8 +14,7 @@ order: 3
 
 **Graduate Teaching Assistant @ University of Maryland, College Park** (Jan 2025-May 2025)
  - Mentored and instructed undergraduate students in core cybersecurity and big data concepts, addressing questions and organizing in-class hands-on activities.
- - Refined course content by facilitating discussions and collaborating with the professor, ensuring coverage of critical topics and 
-effective application of theoretical concepts to real-world scenarios. 
+ - Refined course content by facilitating discussions and collaborating with the professor, ensuring coverage of critical topics and effective application of theoretical concepts to real-world scenarios. 
 
 **Associate Software Engineer @ Integral Ad Science** (Apr 2022-Jul 2023)
  - Resolved critical vulnerabilities in project repositories using Cybeats, a newly implemented security platform to the organization, resulting in enhanced code security and reduced organizational risk.
