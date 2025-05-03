@@ -51,6 +51,9 @@ order: 3
 
 ------
 
+ - **Programming Languages:** Python, C, Assembly, Java, HTML/CSS, SQL
+ - **Tools & Technologies:** BurpSuite, Metasploit, Wireshark, IDA Pro, GDB, Ghidra, Kali Linux
+ - **Technical Skills:** Reverse Engineering, Binary Exploitation, Threat Modelling, Penetration Testing, Secure Coding, OWASP Top 10, Scripting, Technical Writing and Documentation
 
 
 ## Education
@@ -66,3 +69,6 @@ _**Relevant Coursework:** Hacking of C Programs and Unix Binaries, Reverse Softw
 
 ------
 
+ - **CompTIA Security+** _\[Valid till May 2027\]_
+ - **eLearn Junior Penetration Tester** (eJPT) _\[Valid till December 2027\]_
+ - **Certificate-less Public Key Encryption for Secure e-Healthcare Systems, CICT-2019 (IEEE)** - _Research Paper in Public-Key Cryptography_
