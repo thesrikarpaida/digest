@@ -37,11 +37,14 @@ order: 2
 
 ------
 
-**Penetration Testing Enterprise Systems** (Dec 2024)
- - Identified and documented critical vulnerabilities by executing black-box penetration testing on Windows and Linux systems, producing comprehensive technical and executive-level reports that enabled stakeholders to understand and mitigate key security risks.
+**C2 Framework for Windows Targets** (May 2025)
+ - Built a FastAPI C2 server with HTTP channels and a lightweight C agent for Windows target machines for modular command execution and communication, demonstrating expertise in Python, C, Windows and asynchronous systems.
 
 **Web Server in Assembly** (Aug 2024)
  - Developed a functional lightweight web server in x64 Assembly capable of processing HTTP requests and sending responses, demonstrating low-level programming expertise and efficient network communication.
+
+**Penetration Testing Enterprise Systems** (Dec 2024)
+ - Identified and documented critical vulnerabilities by executing black-box penetration testing on Windows and Linux systems, producing comprehensive technical and executive-level reports that enabled stakeholders to understand and mitigate key security risks.
 
 **Securing a Cloud-Based Healthcare Application** (Dec 2023)
  - Improved patient data security and reduced compliance risks by assessing AWS cloud infrastructure with the AWS Well-Architected Framework and designing a secure architecture with least privilege, encryption, access controls, and disaster recovery.
