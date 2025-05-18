@@ -38,7 +38,7 @@ order: 2
 ------
 
 **C2 Framework for Windows Targets** (May 2025)
- - Built a FastAPI C2 server with HTTP channels and a lightweight C agent for Windows target machines for modular command execution and communication, demonstrating expertise in Python, C, Windows and asynchronous systems.
+ - Built a FastAPI C2 server with HTTP channels and a lightweight C agent targeting Windows machines for modular command execution and communication, demonstrating expertise in Python, C, Windows and asynchronous systems.
 
 **Web Server in Assembly** (Aug 2024)
  - Developed a functional lightweight web server in x64 Assembly capable of processing HTTP requests and sending responses, demonstrating low-level programming expertise and efficient network communication.
