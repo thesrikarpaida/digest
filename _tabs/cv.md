@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 2
 ---
 
-##### Cybersecurity grad student @ UMD with a strong passion for building and breaking stuff.
+##### Cybersecurity grad @ UMD with a strong passion for building and breaking stuff.
 ###### [ [spaida@terpmail.umd.edu](mailto:spaida@terpmail.umd.edu) ] . [ [/in/srikarpaida](https://www.linkedin.com/in/srikarpaida/) ] . [ [github.com/thesrikarpaida](https://github.com/thesrikarpaida) ]
 
 
@@ -49,6 +49,9 @@ order: 2
 **Securing a Cloud-Based Healthcare Application** (Dec 2023)
  - Improved patient data security and reduced compliance risks by assessing AWS cloud infrastructure with the AWS Well-Architected Framework and designing a secure architecture with least privilege, encryption, access controls, and disaster recovery.
 
+**CMMC Compliance Review** (Mar 2024)
+ - Conducted a comprehensive review of a web application to assess the compliance with CMMC 2.0 Level 1 requirements and identify deficiencies in the security measures to document findings for further analysis.
+
 
 ## Skills
 
@@ -56,7 +59,7 @@ order: 2
 
  - **Programming Languages:** Python, C, Assembly, Java, HTML/CSS, SQL
  - **Tools & Technologies:** BurpSuite, Metasploit, Wireshark, IDA Pro, GDB, Ghidra, Kali Linux
- - **Technical Skills:** Reverse Engineering, Binary Exploitation, Threat Modelling, Penetration Testing, Secure Coding, OWASP Top 10, Scripting, Technical Writing and Documentation
+ - **Technical Skills:** Reverse Engineering, Binary Exploitation, Threat Modelling, Penetration Testing, Secure Coding, OWASP Top 10, Shell Scripting, Technical Writing and Documentation
 
 
 ## Education
