@@ -37,19 +37,19 @@ order: 2
 
 ------
 
-**C2 Framework for Windows Targets** (May 2025)
+**C2 Framework for Windows Targets** 
  - Built a FastAPI C2 server with HTTP channels and a lightweight C agent targeting Windows machines for modular command execution and communication, demonstrating expertise in Python, C, Windows and asynchronous systems.
 
-**Web Server in Assembly** (Aug 2024)
+**Web Server in Assembly** 
  - Developed a functional lightweight web server in x64 Assembly capable of processing HTTP requests and sending responses, demonstrating low-level programming expertise and efficient network communication.
 
-**Penetration Testing Enterprise Systems** (Dec 2024)
+**Penetration Testing Enterprise Systems** 
  - Identified and documented critical vulnerabilities by executing black-box penetration testing on Windows and Linux systems, producing comprehensive technical and executive-level reports that enabled stakeholders to understand and mitigate key security risks.
 
-**Securing a Cloud-Based Healthcare Application** (Dec 2023)
+**Securing a Cloud-Based Healthcare Application** 
  - Improved patient data security and reduced compliance risks by assessing AWS cloud infrastructure with the AWS Well-Architected Framework and designing a secure architecture with least privilege, encryption, access controls, and disaster recovery.
 
-**CMMC Compliance Review** (Mar 2024)
+**CMMC Compliance Review** 
  - Conducted a comprehensive review of a web application to assess the compliance with CMMC 2.0 Level 1 requirements and identify deficiencies in the security measures to document findings for further analysis.
 
 
@@ -58,8 +58,8 @@ order: 2
 ------
 
  - **Programming Languages:** Python, C, Assembly, Java, HTML/CSS, SQL
- - **Tools & Technologies:** BurpSuite, Metasploit, Wireshark, IDA Pro, GDB, Ghidra, Kali Linux
- - **Technical Skills:** Reverse Engineering, Binary Exploitation, Threat Modelling, Penetration Testing, Secure Coding, OWASP Top 10, Shell Scripting, Technical Writing and Documentation
+ - **Tools & Technologies:** BurpSuite, Metasploit, Wireshark, IDA Pro, GDB, Ghidra, Kali Linux, Git, Jira, Confluence, Windows, Linux
+ - **Skills:** Reverse Engineering, Threat Modelling, Penetration Testing, MITRE ATT&CK, OWASP Top 10, Binary Exploitation, Shell Scripting, Technical Writing and Documentation, Agile Development, Cross-functional Collaboration
 
 
 ## Education
