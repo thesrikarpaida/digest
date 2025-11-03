@@ -62,6 +62,15 @@ order: 2
  - **Skills:** Reverse Engineering, Threat Modelling, Penetration Testing, MITRE ATT&CK, OWASP Top 10, Binary Exploitation, Shell Scripting, Technical Writing and Documentation, Agile Development, Cross-functional Collaboration
 
 
+## Achievements
+
+------
+
+- Achieved 7th place in SANS x WiCyS CTF 2025.
+- Secured 2nd place as RandomHackers2 in BSides NoVA 2025 CTF.
+- Achieved 7th place in Amazon x WiCyS CTF 2025.
+
+
 ## Education
 
 ------
