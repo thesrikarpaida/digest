@@ -14,7 +14,7 @@ layout: default
 
   {% if page.tags.size > 0 %}
   <div class="digest-post__tags">
-    {% for t in page.tags %}<a href="{{ '/tags/' | append: t | slugify | relative_url }}">{{ t }}</a>{% endfor %}
+    {% for t in page.tags %}<span>{{ t | escape }}</span>{% endfor %}
   </div>
   {% endif %}
 

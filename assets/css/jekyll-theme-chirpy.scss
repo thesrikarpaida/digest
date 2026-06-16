@@ -188,9 +188,8 @@ a.digest-card:hover {
   margin: 0.1rem 0 0.55rem;
 }
 .digest-post__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.1rem; }
-.digest-post__tags a { font-size: 0.7rem; opacity: 0.6; text-decoration: none; }
-.digest-post__tags a::before { content: "#"; opacity: 0.6; }
-.digest-post__tags a:hover { opacity: 1; }
+.digest-post__tags span { font-size: 0.7rem; opacity: 0.6; }
+.digest-post__tags span::before { content: "#"; opacity: 0.6; }
 .digest-post__body { font-size: 0.95rem; line-height: 1.75; }
 .digest-post__sources {
   margin-top: 1.6rem;
