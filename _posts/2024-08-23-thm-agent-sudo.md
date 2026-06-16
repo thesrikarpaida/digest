@@ -2,7 +2,6 @@
 layout: post
 title: TryHackMe Room - Agent Sudo
 date: 2024-08-23 13:27:00 +0800
-categories: [tryhackme, walkthrough]
 tags: [ctf]
 image: /pictures/20240823/Agent_Sudo.png
 ---

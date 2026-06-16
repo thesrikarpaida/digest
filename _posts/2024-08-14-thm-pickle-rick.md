@@ -2,7 +2,6 @@
 layout: post
 title: TryHackMe Room - Pickle Rick
 date: 2024-08-14 15:20:00 +0800
-categories: [tryhackme, walkthrough]
 tags: [ctf]
 image: /pictures/20240814/Pickle_Rick.jpg
 ---

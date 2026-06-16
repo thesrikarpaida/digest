@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+
+<article class="digest-post px-1">
+  <header class="digest-post__head">
+    {% if page.severity %}<span class="sev sev--{{ page.severity }}">{{ page.severity | upcase }}</span>{% endif %}
+    <time class="digest-post__date">{{ page.date | date: "%B %-d, %Y" }}</time>
+  </header>
+
+  <h1 class="digest-post__title">{{ page.title }}</h1>
+
+  {% if page.tags.size > 0 %}
+  <div class="digest-post__tags">
+    {% for t in page.tags %}<a href="{{ '/tags/' | append: t | slugify | relative_url }}">{{ t }}</a>{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="digest-post__body content">
+    {{ content }}
+  </div>
+
+  {% if page.sources %}
+  <footer class="digest-post__sources">
+    <span class="digest-post__label">Sources</span>
+    <ul>
+      {% for s in page.sources %}
+      <li><a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.title | default: s.url }}</a></li>
+      {% endfor %}
+    </ul>
+  </footer>
+  {% endif %}
+
+  <a class="digest-post__back" href="{{ '/' | relative_url }}">&larr; Back to the feed</a>
+</article>
+
+<!-- This is a digest item, not a blog post: relabel the breadcrumb root. -->
+<script>
+  (function () {
+    var link = document.querySelector('#breadcrumb span:first-child a');
+    if (link) {
+      link.textContent = 'Digest';
+      link.setAttribute('href', '{{ "/" | relative_url }}');
+    }
+  })();
+</script>

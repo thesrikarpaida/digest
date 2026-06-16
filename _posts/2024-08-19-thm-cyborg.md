@@ -2,7 +2,6 @@
 layout: post
 title: TryHackMe Room - Cyborg
 date: 2024-08-19 12:15:00 +0800
-categories: [tryhackme, walkthrough]
 tags: [ctf]
 image: /pictures/20240819/cyborg.jpg
 ---

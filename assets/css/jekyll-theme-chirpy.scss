@@ -1,0 +1,262 @@
+---
+# Site stylesheet entry. This file overrides the theme's same-named file, so it
+# must import the theme styles first, then we append customizations below.
+---
+
+@use 'main';
+
+/* ------------------------------------------------------------------ *
+ *  Monospace web font
+ *
+ *  grahamhelton.com is set entirely in Berkeley Mono (a paid font we
+ *  can't redistribute). JetBrains Mono is a free, OFL-licensed mono
+ *  with the same terminal feel. Self-served via jsDelivr (no theme
+ *  override, no fragile CSS @import ordering).
+ *
+ *  To use a different mono, change $mono-font below. If you license
+ *  Berkeley Mono, drop its woff2 files in assets/fonts/ and point the
+ *  @font-face `src` at them instead.
+ * ------------------------------------------------------------------ */
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-latin-700-normal.woff2') format('woff2');
+}
+
+$mono-font: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+:root {
+  --bs-body-font-family: #{$mono-font};
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+.site-title,
+.site-subtitle,
+.post-title,
+.nav-link,
+#sidebar .site-title,
+#search-result-wrapper,
+.dynamic-title {
+  font-family: $mono-font;
+}
+
+/* ===================================================================== *
+ *  Digest UI — FEED / TOP PICKS / DEEP DIVES
+ * ===================================================================== */
+
+.digest-intro {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  line-height: 1.55;
+  margin: 0.1rem 0 1.3rem;
+}
+
+/* Date group heading (overrides the theme's big h2) */
+h2.digest-date {
+  font-size: 0.72rem !important;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 1.7rem 0 0.35rem !important;
+}
+h2.digest-date:first-of-type { margin-top: 0.2rem !important; }
+
+/* Feed / Top Picks rows */
+a.digest-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.65rem 0.6rem;
+  margin: 0 -0.6rem;
+  border-radius: 0.4rem;
+  border-bottom: 1px solid var(--main-border-color, rgba(128, 128, 128, 0.18));
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background 0.12s ease;
+}
+a.digest-item:hover { background: rgba(128, 128, 128, 0.08); }
+
+.digest-item__row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+.digest-item__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+a.digest-item:hover .digest-item__title { color: var(--link-color, #1d7fd6); }
+.digest-item__tags {
+  font-size: 0.68rem;
+  opacity: 0.5;
+  letter-spacing: 0.01em;
+}
+
+/* Severity pills (color-coded; readable on light + dark) */
+.sev {
+  flex: 0 0 auto;
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  padding: 0.3em 0.5em;
+  border-radius: 0.3rem;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+  transform: translateY(-0.06em);
+}
+.sev--critical { color: #e5484d; background: rgba(229, 72, 77, 0.12); }
+.sev--high     { color: #e8770c; background: rgba(232, 119, 12, 0.13); }
+.sev--medium   { color: #2f7fd1; background: rgba(47, 127, 209, 0.13); }
+.sev--low      { color: #2f9e57; background: rgba(47, 158, 87, 0.13); }
+
+/* Deep Dives cards */
+.digest--cards { display: grid; gap: 0.8rem; margin-top: 0.4rem; }
+a.digest-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--main-border-color, rgba(128, 128, 128, 0.18));
+  border-radius: 0.55rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+a.digest-card:hover {
+  background: rgba(128, 128, 128, 0.05);
+  border-color: rgba(128, 128, 128, 0.4);
+}
+.digest-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.68rem;
+  opacity: 0.6;
+}
+.digest-card__title { font-size: 1rem; font-weight: 600; line-height: 1.4; }
+.digest-card__excerpt { font-size: 0.82rem; opacity: 0.72; line-height: 1.55; }
+
+/* Breadcrumb: single line, ellipsis on overflow (no ugly wrap-to-top).
+   It's a flex item, so min-width:0 lets it shrink and truncate. */
+#breadcrumb {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Opened digest item page (the `digest` layout) */
+.digest-post {
+  max-width: 46rem;
+  margin-top: 2rem; /* match the breadcrumb→title gap of a normal blog post */
+}
+.digest-post__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.55rem;
+}
+.digest-post__date { font-size: 0.72rem; opacity: 0.55; }
+.digest-post__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0.1rem 0 0.55rem;
+}
+.digest-post__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.1rem; }
+.digest-post__tags a { font-size: 0.7rem; opacity: 0.6; text-decoration: none; }
+.digest-post__tags a::before { content: "#"; opacity: 0.6; }
+.digest-post__tags a:hover { opacity: 1; }
+.digest-post__body { font-size: 0.95rem; line-height: 1.75; }
+.digest-post__sources {
+  margin-top: 1.6rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--main-border-color, rgba(128, 128, 128, 0.2));
+}
+.digest-post__label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  margin-bottom: 0.3rem;
+}
+.digest-post__sources ul { margin: 0; padding-left: 1.1rem; }
+.digest-post__sources li { font-size: 0.85rem; }
+.digest-post__back {
+  display: inline-block;
+  margin-top: 1.9rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  text-decoration: none;
+}
+.digest-post__back:hover { opacity: 1; }
+
+/* Tighter BLOG (home) post titles */
+#post-list .card-title { font-size: 1.05rem !important; line-height: 1.45; }
+
+/* "Back to portfolio" button (About page) */
+.portfolio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.4rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--main-border-color, rgba(128, 128, 128, 0.4));
+  border-radius: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.portfolio-btn:hover {
+  background: rgba(128, 128, 128, 0.08);
+  border-color: rgba(128, 128, 128, 0.6);
+}
+
+/* Sidebar profile: name in caps, tagline removed */
+#sidebar .site-title {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+#sidebar .site-subtitle { display: none; }
+
+/* Sidebar bottom icon row: even spacing, single line, no separator dot */
+#sidebar .sidebar-bottom {
+  flex-wrap: nowrap !important;
+  gap: 0.65rem;
+}
+#sidebar .sidebar-bottom .icon-border {
+  display: none;
+}
+#sidebar .sidebar-bottom > a,
+#sidebar .sidebar-bottom > button {
+  margin: 0 !important;
+}

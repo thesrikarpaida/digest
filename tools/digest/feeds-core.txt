@@ -1,0 +1,37 @@
+# Core feed list: a small, high-signal, reliable subset.
+#
+# Used ONLY by the OpenRouter fallback path (free models have a small context
+# window and tight rate limits, so they curate over just these, capped to
+# OPENROUTER_MAX_CANDIDATES). The primary provider (Gemini) still reads the
+# full feeds.txt. Keep this list tight.
+
+https://krebsonsecurity.com/feed/
+https://www.bleepingcomputer.com/feed/
+https://feeds.feedburner.com/TheHackersNews
+https://www.darkreading.com/rss.xml
+https://doublepulsar.com/feed
+https://msrc.microsoft.com/blog/feed
+https://blog.talosintelligence.com/rss/
+https://unit42.paloaltonetworks.com/feed/
+https://securelist.com/feed/
+https://www.sentinelone.com/feed/
+https://blog.cloudflare.com/rss/
+https://googleprojectzero.blogspot.com/feeds/posts/default
+https://www.wiz.io/feed/rss.xml
+https://blog.projectdiscovery.io/rss/
+https://portswigger.net/research/rss
+https://www.cisa.gov/blog.xml
+https://labs.watchtowr.com/rss/
+https://blog.trailofbits.com/feed/
+https://blog.isosceles.com/rss/
+https://www.blackhillsinfosec.com/feed/
+https://trustedsec.com/feed.rss
+https://posts.specterops.io/feed
+https://blog.xpnsec.com/rss.xml
+https://www.mdsec.co.uk/feed/
+https://blog.orange.tw/atom
+https://thedfirreport.com/feed/
+https://redcanary.com/feed/
+https://www.aquasec.com/feed/
+https://securitylabs.datadoghq.com/rss/feed.xml
+https://decoded.avast.io/feed/

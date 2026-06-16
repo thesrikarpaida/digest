@@ -1,0 +1,109 @@
+name: "Weekly Digest"
+
+on:
+  schedule:
+    # 08:00 UTC every Sunday — a low-traffic window for the LLM APIs (US asleep,
+    # Europe just waking) and weekly keeps GitHub Actions usage within quota.
+    - cron: "0 8 * * 0"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Generate without publishing (logs only)"
+        type: boolean
+        default: false
+
+# Needed to commit generated posts and to publish to Pages.
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pipeline deps
+        run: pip install -r tools/digest/requirements.txt
+
+      - name: Generate digest
+        env:
+          # --- Keys: Settings > Secrets and variables > Actions > "Secrets" tab ---
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # --- Tuning: the "Variables" tab on that same page. Any variable left
+          #     unset falls back to the default baked into build_digest.py, so
+          #     you only need to set the ones you actually want to change. ---
+          LLM_PRIMARY: ${{ vars.LLM_PRIMARY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GEMINI_MAX_OUTPUT_TOKENS: ${{ vars.GEMINI_MAX_OUTPUT_TOKENS }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }}
+          OPENROUTER_MAX_CANDIDATES: ${{ vars.OPENROUTER_MAX_CANDIDATES }}
+          DIGEST_LOOKBACK_HOURS: ${{ vars.DIGEST_LOOKBACK_HOURS }}
+          DIGEST_MAX_CANDIDATES: ${{ vars.DIGEST_MAX_CANDIDATES }}
+          DIGEST_MAX_PUBLISH: ${{ vars.DIGEST_MAX_PUBLISH }}
+          DIGEST_MAX_MUST_KNOW: ${{ vars.DIGEST_MAX_MUST_KNOW }}
+          DIGEST_FETCH_WORKERS: ${{ vars.DIGEST_FETCH_WORKERS }}
+          DIGEST_HOST_GAP: ${{ vars.DIGEST_HOST_GAP }}
+          DIGEST_ALLOW_RAW_FALLBACK: ${{ vars.DIGEST_ALLOW_RAW_FALLBACK }}
+          DIGEST_VERBOSE: ${{ vars.DIGEST_VERBOSE }}
+          OPENROUTER_SITE_URL: https://rm-fr.dev/digest/
+          OPENROUTER_APP_NAME: rm-fr-digest
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python tools/digest/build_digest.py --dry-run
+          else
+            python tools/digest/build_digest.py
+          fi
+
+      - name: Commit new posts
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name  "digest-bot"
+          git config user.email "actions@github.com"
+          git add _digest tools/digest/state/seen.json
+          if git diff --cached --quiet; then
+            echo "No new posts to commit."
+          else
+            git commit -m "digest: weekly update $(date -u +'%Y-%m-%d')"
+            git push
+          fi
+
+      # ---- Build & deploy the site (the push above won't trigger the
+      #      separate Pages workflow, so we build here directly) ----
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: "production"
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site${{ steps.pages.outputs.base_path }}"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -13,7 +13,7 @@ timezone: America/New_York
 
 title: Srikar Paida
 
-tagline: Cybersecurity Engineer
+tagline: "" # intentionally blank; the portfolio site already shows the title/role
 
 description: >- # used by seo meta and the atom feed
   
@@ -29,7 +29,7 @@ twitter:
 social:
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Srikar Paida
-  email: spaida@terpmail.umd.edu
+  email: srikar.paida100@gmail.com
   links:
     # The first element serves as the copyright owner's link
     # - https://twitter.com/thesrikarpaida # change to your twitter homepage
@@ -142,7 +142,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: "/blog"
+baseurl: "/digest"
 
 # ------------ The following options are not recommended to be modified ------------------
 
@@ -162,6 +162,11 @@ collections:
   tabs:
     output: true
     sort_by: order
+  # Auto-generated digest items live in their own collection so they do NOT
+  # appear on the home/BLOG page (which lists _posts). Each weekly run writes
+  # to its own dated subfolder, e.g. _digest/2026-06-15/.
+  digest:
+    output: true
 
 defaults:
   - scope:
@@ -184,6 +189,16 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: ""
+      type: digest
+    values:
+      layout: digest
+      comments: false
+      toc: false
+      # baseurl already provides the "/digest" prefix. Group items under /feed/
+      # and keep the run-folder/slug, e.g. /digest/feed/2026-06-15/<slug>/.
+      permalink: /feed/:path/
   - scope:
       path: assets/js/dist
     values:
@@ -212,10 +227,8 @@ exclude:
   - package*.json
 
 jekyll-archives:
-  enabled: [categories, tags]
+  enabled: [tags]
   layouts:
-    category: category
     tag: tag
   permalinks:
     tag: /tags/:name/
-    category: /categories/:name/

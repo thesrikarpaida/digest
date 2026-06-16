@@ -1,0 +1,10 @@
+_site
+.jekyll-cache
+.sass-cache
+.git
+.DS_Store
+vendor
+node_modules
+tools/digest/.venv
+tools/digest/__pycache__
+*.gem

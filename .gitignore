@@ -24,3 +24,15 @@ package-lock.json
 # Misc
 _sass/dist
 assets/js/dist
+
+# Digest pipeline (Python)
+tools/digest/.env
+tools/digest/.venv
+tools/digest/__pycache__
+**/__pycache__
+*.pyc
+
+# Never commit any .env (secrets)
+.env
+**/.env
+tools/digest/state/run.log

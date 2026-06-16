@@ -1,0 +1,22 @@
+---
+layout: compress
+swcache: true
+---
+{% comment %}
+  Overrides the theme's search index so search covers BOTH the blog (_posts)
+  and the auto-generated digest (_digest) — otherwise the search box on the
+  FEED / TOP PICKS / DEEP DIVES pages wouldn't find any feed items.
+{% endcomment %}
+[
+  {% assign entries = site.posts | concat: site.digest %}
+  {% for post in entries %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "categories": {{ post.categories | join: ', ' | jsonify }},
+    "tags": {{ post.tags | join: ', ' | jsonify }},
+    "date": {{ post.date | jsonify }},
+    "content": {{ post.content | strip_html | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

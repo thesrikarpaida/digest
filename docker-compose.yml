@@ -1,0 +1,15 @@
+services:
+  blog:
+    build: .
+    ports:
+      - "127.0.0.1:4000:4000"     # site -> http://localhost:4000/blog/ (this machine only)
+      - "127.0.0.1:35729:35729"   # livereload (this machine only)
+    volumes:
+      - .:/app                       # live-edit content from the host
+      - bundle_cache:/usr/local/bundle  # persist installed gems between runs
+    environment:
+      JEKYLL_ENV: development
+    command: bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling
+
+volumes:
+  bundle_cache:
