@@ -1,9 +1,19 @@
 ---
 # Site stylesheet entry. This file overrides the theme's same-named file, so it
 # must import the theme styles first, then we append customizations below.
+#
+# IMPORTANT: keep the conditional import below identical to the theme's original.
+# In production it must import `main.bundle` (Chirpy + Bootstrap compiled in);
+# in development it imports `main` (Bootstrap is loaded from a CDN link instead).
+# Hard-coding `@use 'main'` drops Bootstrap from the production build.
 ---
 
-@use 'main';
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
 
 /* ------------------------------------------------------------------ *
  *  Monospace web font
