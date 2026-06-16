@@ -1,7 +1,9 @@
 # Bundler cache
 .bundle
 vendor
-Gemfile.lock
+# NOTE: Gemfile.lock is intentionally committed for this SITE so CI builds the
+# exact gem versions tested locally (a loose Gemfile let CI pull a newer Chirpy
+# that broke the CSS). Do NOT git-ignore it.
 
 # Jekyll cache
 .jekyll-cache
