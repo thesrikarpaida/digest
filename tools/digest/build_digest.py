@@ -43,6 +43,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import sys
 import threading
 import time
@@ -787,6 +788,16 @@ def main():
 
     # Each run writes into its own dated subfolder of the digest collection.
     run_dir = DIGEST_DIR / dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+
+    # A re-run on the same UTC day REPLACES that day's folder rather than
+    # appending to it — otherwise two runs in one day (e.g. a failed run that
+    # still committed, then a manual re-trigger) stack up to 2x the posts in
+    # one folder. We only wipe when we actually have fresh items to write and
+    # this is a real run, so a no-result or failed-curation run never empties
+    # an existing good folder.
+    if items and not args.dry_run and run_dir.exists():
+        shutil.rmtree(run_dir)
+        print(f"Replacing existing {run_dir.name}/ with this run's items.")
 
     written = 0
     for item in items:
