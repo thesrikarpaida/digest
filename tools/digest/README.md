@@ -141,14 +141,15 @@ less volume.
 
 ## Re-running on the same day
 
-Each run writes into a dated folder (`_digest/<UTC-date>/`). A second run on the
-**same day replaces** that folder rather than adding to it, so you never get two
-stacked batches. But because already-published items are in `seen.json`, a plain
-re-trigger only surfaces what's *newly* appeared since the last run — often just
-a handful. To redo a day's digest as a full fresh batch, turn on **Rebuild
-today's digest** in *Actions → Weekly Digest → Run workflow* (or run
-`python build_digest.py --rebuild` locally). Rebuild forgets items seen *today*
-so the whole recent pool is re-curated. The scheduled weekly run never needs it.
+Each run writes into a dated folder (`_digest/<UTC-date>/`). **A second run on
+the same day automatically rebuilds that day from scratch.** The script uses the
+existence of today's folder as the signal: if it's already there, this is a
+re-trigger, so it forgets every item marked seen *today*, re-curates the full
+recent pool, and replaces the folder with a complete fresh batch (~20) — not just
+the handful of items that appeared since the last run. The normal first run of a
+day finds no folder, so it behaves exactly as usual. No flag or checkbox needed.
+(`python build_digest.py --rebuild` forces the same locally, e.g. before the
+folder exists.)
 
 ## Schedule
 

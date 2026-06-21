@@ -11,10 +11,6 @@ on:
         description: "Generate without publishing (logs only)"
         type: boolean
         default: false
-      rebuild:
-        description: "Rebuild today's digest from scratch (redo a same-day run)"
-        type: boolean
-        default: false
 
 # Needed to commit generated posts and to publish to Pages.
 permissions:
@@ -73,11 +69,11 @@ jobs:
           OPENROUTER_SITE_URL: https://rm-fr.dev/digest/
           OPENROUTER_APP_NAME: rm-fr-digest
         run: |
-          ARGS=""
-          [ "${{ github.event.inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
-          [ "${{ github.event.inputs.rebuild }}" = "true" ] && ARGS="$ARGS --rebuild"
-          echo "Running: build_digest.py$ARGS"
-          python tools/digest/build_digest.py $ARGS
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python tools/digest/build_digest.py --dry-run
+          else
+            python tools/digest/build_digest.py
+          fi
 
       - name: Commit new posts
         if: github.event.inputs.dry_run != 'true'

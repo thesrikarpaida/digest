@@ -756,19 +756,25 @@ def main():
     seen = load_seen()
     now_iso = dt.datetime.now(dt.timezone.utc).isoformat()
     today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+    run_dir = DIGEST_DIR / today
 
-    # Rebuild mode (deliberate same-day re-trigger): forget everything marked
-    # seen today so the full recent pool is eligible again. Combined with the
-    # replace-folder step below, this regenerates a complete fresh batch for
-    # today instead of only the handful of items published since the last run.
-    rebuild = args.rebuild or cfg("DIGEST_REBUILD_TODAY", "").strip().lower() \
-        in ("1", "true", "yes")
-    if rebuild and not args.dry_run:
+    # Same-day re-run = automatic rebuild.
+    #
+    # If today's folder already exists, a run has already happened today, so
+    # this invocation is a re-trigger. In that case we forget every item marked
+    # seen *today* so the full recent pool becomes eligible again, and the
+    # replace-folder step below swaps in a complete fresh batch. On the normal
+    # first run of a day the folder doesn't exist yet, so nothing is forgotten
+    # and the run behaves exactly as before. (`--rebuild` forces this too, e.g.
+    # for a local run before the folder exists.)
+    rerun_today = run_dir.exists()
+    if (rerun_today or args.rebuild) and not args.dry_run:
         before = len(seen)
         seen = {k: v for k, v in seen.items()
                 if not str(v).startswith(today)}
-        print(f"Rebuild: cleared {before - len(seen)} item(s) seen today; "
-              "they are eligible for re-curation.")
+        why = "today's folder already exists" if rerun_today else "--rebuild"
+        print(f"Same-day rebuild ({why}): cleared {before - len(seen)} item(s) "
+              "seen today so they are re-curated into a fresh batch.")
 
     print(f"Reading {len(feeds)} feeds "
           f"({len(core_urls)} core; lookback {lookback}h)...")
@@ -805,9 +811,8 @@ def main():
         note = f" (trimmed from {n0} by dedupe/cap)" if len(items) != n0 else ""
         print(f"Publishing {len(items)} item(s), {mk} flagged Top Pick{note}.")
 
-    # Each run writes into its own dated subfolder of the digest collection.
-    run_dir = DIGEST_DIR / dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
-
+    # Each run writes into its own dated subfolder (run_dir, set above).
+    #
     # A re-run on the same UTC day REPLACES that day's folder rather than
     # appending to it — otherwise two runs in one day (e.g. a failed run that
     # still committed, then a manual re-trigger) stack up to 2x the posts in
