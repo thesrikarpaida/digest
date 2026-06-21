@@ -2,11 +2,11 @@
 title: "OWASP Top 10 for LLM Applications: A Testing Guide"
 date: 2026-06-21 14:03:59 +0000
 section: deep-dives
-tags: [llm-security, owasp, penetration-testing, vulnerability-testing]
-severity: high
-must_know: true
+tags: [owasp, llm, pentesting, ai-security]
+severity: medium
+must_know: false
 sources:
   - title: "FORTBRIDGE"
     url: "https://fortbridge.co.uk/pentesting/owasp-top-10-llm-applications-testing-guide/"
 ---
-This guide provides a detailed look into testing for the OWASP Top 10 vulnerabilities specifically tailored for Large Language Model (LLM) applications. It covers each of the ten critical risks, such as Prompt Injection (LLM01) and Data Disclosure (LLM06), offering practical testing methods, real-world examples, and mitigation strategies. Security engineers and offensive security practitioners can leverage this resource to identify and address unique security challenges in LLM-powered systems, ensuring more robust and secure deployments. The guide emphasizes the importance of understanding and actively testing for these specific vulnerabilities to prevent exploitation in production environments.
+FORTBRIDGE has released a comprehensive guide for testing the OWASP Top 10 vulnerabilities specifically for LLM applications. This guide details how to test for each of the ten critical risks, including Prompt Injection (LLM01), Data Disclosure (LLM06), and Excessive Agency (LLM08), in production systems. It provides practical testing methods, real-world examples, mitigations, and relevant tools for security professionals.
