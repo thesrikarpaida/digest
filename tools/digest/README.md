@@ -139,6 +139,17 @@ less volume.
   expand the "Generate digest" step.* (Logs are kept ~90 days; secret values
   are auto-masked as `***`.)
 
+## Re-running on the same day
+
+Each run writes into a dated folder (`_digest/<UTC-date>/`). A second run on the
+**same day replaces** that folder rather than adding to it, so you never get two
+stacked batches. But because already-published items are in `seen.json`, a plain
+re-trigger only surfaces what's *newly* appeared since the last run — often just
+a handful. To redo a day's digest as a full fresh batch, turn on **Rebuild
+today's digest** in *Actions → Weekly Digest → Run workflow* (or run
+`python build_digest.py --rebuild` locally). Rebuild forgets items seen *today*
+so the whole recent pool is re-curated. The scheduled weekly run never needs it.
+
 ## Schedule
 
 `.github/workflows/digest.yml` runs weekly on **Sundays at 08:00 UTC** (and

@@ -733,6 +733,11 @@ def main():
                     help="Don't write posts or update state; just report.")
     ap.add_argument("--verbose", action="store_true",
                     help="List every unreachable feed (otherwise just a count).")
+    ap.add_argument("--rebuild", action="store_true",
+                    help="Rebuild TODAY's digest from scratch: forget items already "
+                         "seen today so the full recent pool is re-curated, and "
+                         "replace today's folder. Use for a deliberate same-day "
+                         "re-trigger; the normal weekly run does not need this.")
     args = ap.parse_args()
 
     load_dotenv()
@@ -750,6 +755,20 @@ def main():
     core_urls = set(read_feeds(CORE_FEEDS_FILE))
     seen = load_seen()
     now_iso = dt.datetime.now(dt.timezone.utc).isoformat()
+    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+
+    # Rebuild mode (deliberate same-day re-trigger): forget everything marked
+    # seen today so the full recent pool is eligible again. Combined with the
+    # replace-folder step below, this regenerates a complete fresh batch for
+    # today instead of only the handful of items published since the last run.
+    rebuild = args.rebuild or cfg("DIGEST_REBUILD_TODAY", "").strip().lower() \
+        in ("1", "true", "yes")
+    if rebuild and not args.dry_run:
+        before = len(seen)
+        seen = {k: v for k, v in seen.items()
+                if not str(v).startswith(today)}
+        print(f"Rebuild: cleared {before - len(seen)} item(s) seen today; "
+              "they are eligible for re-curation.")
 
     print(f"Reading {len(feeds)} feeds "
           f"({len(core_urls)} core; lookback {lookback}h)...")
