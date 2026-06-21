@@ -25,6 +25,12 @@ concurrency:
 jobs:
   generate-and-deploy:
     runs-on: ubuntu-latest
+    # actions/deploy-pages requires the deploying job to target the
+    # github-pages environment, otherwise the deployment API returns
+    # "Missing environment" (HTTP 400).
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
