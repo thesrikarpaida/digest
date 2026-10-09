@@ -141,6 +141,10 @@ pwa:
 
 paginate: 10
 
+# Items per page on the digest listings (Digest, Top Picks, Deep Dives).
+# See _plugins/digest-paginator.rb.
+digest_per_page: 25
+
 # The base URL of your site
 baseurl: "/digest"
 
